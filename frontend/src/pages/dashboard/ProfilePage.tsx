@@ -7,21 +7,26 @@ const ProfilePage = observer(() => {
   const usersStore = useContext(UsersStoreContext)
 
   return (
-    <div>
-      <div>
-        <img className="h-32 w-full object-cover lg:h-48" src={profileBackgroundImage} alt="" />
-      </div>
-      <div className="flex flex-col mx-auto max-w-5xl -mt-6 px-4 sm:px-6 lg:px-8">
-        <div>
-          <span className="inline-flex h-12 w-12 rounded-full items-center justify-center bg-gray-500 ring-4 ring-white">
-            <span className="text-xl font-medium leading-none text-white">{usersStore.me?.initials}</span>
-          </span>
+    <div className="flex flex-col">
+      <div className="flex flex-row items-center space-x-5 py-10 px-4 sm:px-6 lg:px-8 bg-slate-200">
+        <div className="flex-shrink-0">
+          <div>
+            <span className="inline-flex h-16 w-16 rounded-full items-center justify-center bg-gray-500 ring-4 ring-white">
+              <span className="text-xl font-medium leading-none text-white">{usersStore.me?.initials}</span>
+            </span>
+          </div>
         </div>
-        <div className="mt-2">
-          <h1 className="truncate text-2xl font-bold text-gray-900">{usersStore.me?.display_name}</h1>
+        <div className="pt-1.5">
+          <h1 className="text-2xl font-bold text-gray-900">{usersStore.me?.display_name}</h1>
+          <p className="text-sm font-medium text-gray-500">
+            {usersStore.me?.email}
+          </p>
         </div>
       </div>
-    </div >
+      <div className="flex flex-col py-10 px-4 sm:px-6 lg:px-8">
+        Page content goes here
+      </div>
+    </div>
   )
 });
 
