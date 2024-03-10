@@ -35,14 +35,11 @@ class AuthStore {
     }
 
     logout = flow(function* (this: AuthStore) {
-        try {
-            if (this.tokenData !== null) {
-                yield revokeToken(this.tokenData)
-            }
-        } finally {
-            this.clearTokenData()
+        const tokenDataCopy = this.tokenData ? { ...this.tokenData } : null
+        this.clearTokenData()
+        if (tokenDataCopy !== null) {
+            yield revokeToken(tokenDataCopy)
         }
-
     })
 
     silentLogin = flow(function* (this: AuthStore) {

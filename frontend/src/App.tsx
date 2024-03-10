@@ -4,12 +4,18 @@ import RootComponent from './RootComponent'
 import { observer } from 'mobx-react-lite';
 import { AuthStoreContext } from './store/auth';
 import { UsersStoreContext } from './store/users';
+import { UIStoreContext } from './store/ui';
 
 const App = observer(() => {
 
     const authStore = useContext(AuthStoreContext)
     const usersStore = useContext(UsersStoreContext)
+    const uiStore = useContext(UIStoreContext)
     const [isLoading, setIsLoading] = React.useState(true)
+
+    React.useEffect(() => {
+        uiStore.initTheme()
+    }, [uiStore])
 
     React.useEffect(() => {
         async function silentLogin() {
@@ -31,6 +37,7 @@ const App = observer(() => {
             usersStore.clearData()
         }
     }, [authStore, authStore.isAuthenticated, usersStore])
+
 
     if (isLoading || authStore.isAuthenticating) {
         return (
