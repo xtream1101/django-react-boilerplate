@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from drf_spectacular.views import SpectacularAPIView
 
-from backend.views import SpectacularElementsView
+from docs.views import SpectacularElementsView
 
 urlpatterns = [
     path("admin/", admin.site.urls),

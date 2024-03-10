@@ -16,6 +16,7 @@ import dj_database_url
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
+from docs.utils import read_file
 
 load_dotenv()
 
@@ -98,6 +99,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     # local apps
     "authentication",
+    "docs",
 ]
 
 MIDDLEWARE = [
@@ -210,7 +212,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "TITLE": "Docs",
-    "DESCRIPTION": "API Documentation",
+    "DESCRIPTION": read_file("docs/markdown/introduction.md"),
     "SERVERS": [],
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_COERCE_PATH_PK": True,
@@ -218,9 +220,6 @@ SPECTACULAR_SETTINGS = {
     "COMPONENT_SPLIT_PATCH": True,
     "COMPONENT_SPLIT_REQUEST": True,
     "COMPONENT_NO_READ_ONLY_REQUIRED": True,
-    "EXTENSIONS_ROOT": {
-        "x-tagGroups": [],
-    },
 }
 
 
