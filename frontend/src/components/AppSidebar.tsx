@@ -51,10 +51,10 @@ const AppSidebar = observer(({ navigation, currentNavItem }: IAppSidebarProps) =
                                 ))}
                             </ul>
                         </li>
-                        <li className="-mx-6 mt-auto flex items-center justify-between">
+                        <li className="-mx-6 mt-auto flex items-stretch justify-between">
                             <a
                                 href="#"
-                                className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
+                                className="flex grow items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                             >
                                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-500">
                                     <span className="text-lg font-medium leading-none text-white">{usersStore.me?.initials}</span>
@@ -63,7 +63,7 @@ const AppSidebar = observer(({ navigation, currentNavItem }: IAppSidebarProps) =
                             </a>
                             <Link
                                 to="/logout"
-                                className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-red-500 hover:bg-gray-800"
+                                className="flex items-center justify-center p-3 text-sm text-red-500 hover:bg-gray-800"
                             >
                                 <ArrowRightStartOnRectangleIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
                             </Link>
