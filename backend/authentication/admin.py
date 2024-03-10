@@ -21,13 +21,16 @@ from oauth2_provider.models import (
 from social_django.admin import AssociationOption, NonceOption, UserSocialAuthOption
 from social_django.models import Association, Nonce, UserSocialAuth
 from unfold.admin import ModelAdmin
+from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 
 from authentication.models import User
 
 
 @admin.register(User)
-class UserAdmin(BaseUserAdmin):
-    pass
+class UserAdmin(BaseUserAdmin, ModelAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    change_password_form = AdminPasswordChangeForm
 
 
 admin.site.unregister(Group)
