@@ -3,4 +3,5 @@ export const ROUTES = {
     LOGOUT_ROUTE: '/logout',
     DASHBOARD_ROUTE: '/',
     PROJECTS_ROUTE: '/projects',
+    PROFILE_ROUTE: '/profile',
 }

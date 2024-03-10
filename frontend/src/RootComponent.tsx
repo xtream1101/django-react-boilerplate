@@ -1,14 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import LoginPage from './pages/LoginPage'
-import DashboardPage from './pages/DashboardPage'
-import ProjectsPage from './pages/ProjectsPage'
+import LoginPage from './pages/auth/LoginPage'
+import HomePage from './pages/dashboard/HomePage'
+import ProjectsPage from './pages/dashboard/ProjectsPage'
+import ProfilePage from './pages/dashboard/ProfilePage'
 import NotFoundPage from './pages/NotFoundPage'
 import { ROUTES } from './resources/routes-constants'
 import { observer } from 'mobx-react-lite'
 import RouteGuard from './providers/RouteGuard'
 import AppLayout from './layouts/AppLayout'
-import LogoutPage from './pages/LogoutPage'
+import LogoutPage from './pages/auth/LogoutPage'
 
 const RootComponent = observer(() => {
 
@@ -45,15 +46,17 @@ const RootComponent = observer(() => {
                 <Route element={<AppLayout />}>
                     <Route
                         path={ROUTES.DASHBOARD_ROUTE}
-                        element={<DashboardPage />}
+                        element={<HomePage />}
                     />
                     <Route
                         path={ROUTES.PROJECTS_ROUTE}
                         element={<ProjectsPage />}
                     />
+                    <Route
+                        path={ROUTES.PROFILE_ROUTE}
+                        element={<ProfilePage />}
+                    />
                 </Route>
-
-
             </Routes>
         </Router>
     )

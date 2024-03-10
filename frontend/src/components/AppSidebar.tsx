@@ -4,6 +4,7 @@ import { IAppNavigationItem } from '@/types/app';
 import { Link } from 'react-router-dom';
 import { UsersStoreContext } from '@/store/users';
 import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ROUTES } from '@/resources/routes-constants';
 
 interface IAppSidebarProps {
     navigation: IAppNavigationItem[]
@@ -52,17 +53,17 @@ const AppSidebar = observer(({ navigation, currentNavItem }: IAppSidebarProps) =
                             </ul>
                         </li>
                         <li className="-mx-6 mt-auto flex items-stretch justify-between">
-                            <a
-                                href="#"
+                            <Link
+                                to={ROUTES.PROFILE_ROUTE}
                                 className="flex grow items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                             >
                                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-500">
                                     <span className="text-lg font-medium leading-none text-white">{usersStore.me?.initials}</span>
                                 </span>
                                 <span aria-hidden="true">{usersStore.me?.display_name}</span>
-                            </a>
+                            </Link>
                             <Link
-                                to="/logout"
+                                to={ROUTES.LOGOUT_ROUTE}
                                 className="flex items-center justify-center p-3 text-sm text-red-500 hover:bg-gray-800"
                             >
                                 <ArrowRightStartOnRectangleIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
