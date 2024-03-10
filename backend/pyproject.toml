@@ -1,0 +1,51 @@
+# Ruf config: https://docs.astral.sh/ruff/configuration/
+[tool.poetry]
+name = "django-boilerplate"
+version = "0.1.0"
+description = ""
+authors = []
+license = ""
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.3"
+social-auth-app-django = "^5.4.0"
+django-oauth-toolkit = "^2.3.0"
+drf-social-oauth2 = "^2.1.3"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^4.3.1"
+django-filter = "^24.1"
+python-dotenv = "^1.0.1"
+dj-database-url = "^2.1.0"
+psycopg2-binary = "^2.9.9"
+drf-spectacular = "^0.27.1"
+django-unfold = "^0.20.5"
+django-import-export = "^3.3.7"
+django-simple-history = "^3.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 119
+indent-width = 4
+exclude = ["**/migrations/*.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "Q"]
+
+[tool.ruff.lint.isort]
+force-wrap-aliases = true
+combine-as-imports = true
+# Currently the default, but want to be explicit
+section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]

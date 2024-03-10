@@ -1,0 +1,14 @@
+django
+social-auth-app-django
+django-oauth-toolkit
+drf_social_oauth2
+djangorestframework
+django-cors-headers
+django-filter
+python-dotenv
+dj-database-url
+psycopg2-binary
+drf-spectacular
+django-unfold
+django-import-export
+django-simple-history

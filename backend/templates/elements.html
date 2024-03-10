@@ -1,0 +1,63 @@
+{% load i18n static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ title|default:"Docs" }}</title>
+  <!-- Embed elements Elements via Web Component -->
+  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+  <style>
+    .wrapper {
+      display: block;
+      height: 100%;
+      padding: 1rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+      .wrapper {
+        display: block;
+        height: 100vh;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <elements-api
+      id="docs"
+      apiDescriptionUrl="{{ schema_url }}"
+      router="hash"
+      layout="stacked" />
+  </div>
+  <script>
+    const doc = document.querySelector('#docs');
+
+    function throttle(fn, delay) {
+      let lastCall = 0;
+      return function (...args) {
+        const now = (new Date).getTime();
+        if (now - lastCall < delay) {
+          return;
+        }
+        lastCall = now;
+        return fn(...args);
+      }
+    }
+
+    function updateLayout() {
+      doc.layout = window.innerWidth >= 1200 ? 'sidebar' : 'stacked';
+    }
+
+    let trottledUpdateLayout = throttle(updateLayout, 250);
+
+    window.addEventListener('resize', trottledUpdateLayout);
+    trottledUpdateLayout();
+  </script>
+</body>
+</html>
