@@ -286,3 +286,9 @@ UNFOLD = {
         },
     ],
 }
+
+
+# Keep at the bottom of the settings file
+from backend.loguru_logging import load_loguru  # noqa: E402
+
+load_loguru(globals())
