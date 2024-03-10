@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthStoreContext } from '@/store/auth';
 import { observer } from 'mobx-react-lite';
+import { XCircleIcon } from '@heroicons/react/24/outline';
 
 const LoginPage = observer(() => {
 
@@ -44,10 +45,20 @@ const LoginPage = observer(() => {
             </div>
 
             {error && (
-                <div className="flex items-center justify-center bg-red-100 p-4 rounded-lg mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <p className="text-sm text-red-600">
-                        {error}
-                    </p>
+                <div className="mt-10 rounded-md bg-red-50 p-4 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <div className="flex">
+                        <div className="flex-shrink-0">
+                            <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                        </div>
+                        <div className="ml-3">
+                            <h3 className="text-sm font-medium text-red-800">
+                                There was an error logging in
+                            </h3>
+                            <div className="mt-2 text-sm text-red-700">
+                                {error}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
 
