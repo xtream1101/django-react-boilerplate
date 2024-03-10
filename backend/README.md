@@ -27,7 +27,7 @@ Currently uses local user login, but is setup to support 3rd party sso.
 1. Create a `.env` in the root backend folder with the following content:
 
     ```bash
-    DJANGO_SECRET="super-secret-value-here"
+    DJANGO_SECRET_KEY="super-secret-value-here"
     DATABASE_URL="postgresql://USER:PASS@HOST:5432/DB_NAME"
     ```
 
