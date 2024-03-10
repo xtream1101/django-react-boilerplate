@@ -36,7 +36,9 @@ class AuthStore {
 
     logout = flow(function* (this: AuthStore) {
         try {
-            yield revokeToken(this.tokenData!)
+            if (this.tokenData !== null) {
+                yield revokeToken(this.tokenData)
+            }
         } finally {
             this.clearTokenData()
         }

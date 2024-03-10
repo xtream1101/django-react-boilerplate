@@ -1,20 +1,16 @@
-
-import React, { useContext } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { AuthStoreContext } from '@/store/auth';
 import {
     Bars3Icon,
-  } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 import { IAppNavigationItem } from '@/types/app';
 
 interface IAppMobileHeaderProps {
     onClick: () => void
-    currentNavItem: IAppNavigationItem|undefined
+    currentNavItem: IAppNavigationItem | undefined
 }
 
-const AppMobileHeader = observer( ({onClick, currentNavItem}: IAppMobileHeaderProps) => {
-
-    const authStore = useContext(AuthStoreContext)
+const AppMobileHeader = observer(({ onClick, currentNavItem }: IAppMobileHeaderProps) => {
 
     return (
         <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">

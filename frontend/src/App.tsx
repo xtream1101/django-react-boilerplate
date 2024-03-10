@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { AuthStoreContext } from './store/auth';
 import { UsersStoreContext } from './store/users';
 
-const App = observer( () => {
+const App = observer(() => {
 
     const authStore = useContext(AuthStoreContext)
     const usersStore = useContext(UsersStoreContext)
@@ -22,7 +22,7 @@ const App = observer( () => {
             }
         }
         silentLogin()
-    }, [])
+    }, [authStore])
 
     React.useEffect(() => {
         if (authStore.isAuthenticated) {
@@ -30,13 +30,13 @@ const App = observer( () => {
         } else {
             usersStore.clearData()
         }
-    }, [authStore.isAuthenticated])
+    }, [authStore, authStore.isAuthenticated, usersStore])
 
     if (isLoading || authStore.isAuthenticating) {
         return (
-        <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-            <h1>...</h1>
-        </div>
+            <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <h1>...</h1>
+            </div>
         )
     }
 

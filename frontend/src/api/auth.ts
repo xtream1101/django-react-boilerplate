@@ -31,18 +31,18 @@ export function refreshToken(refreshToken: string) {
     )
 }
 
-export function revokeToken({ access_token, token_type }: IAuthTokenResponse ) {
+export function revokeToken({ access_token: accessToken, token_type: tokenType }: IAuthTokenResponse) {
     return api.post(
         '/auth/revoke-token/',
         {
             client_id: process.env.REACT_APP_API_CLIENT_ID,
             client_secret: process.env.REACT_APP_API_CLIENT_SECRET,
-            token: access_token
+            token: accessToken
         },
         {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `${token_type} ${access_token}`,
+                "Authorization": `${tokenType} ${accessToken}`,
             },
 
         }

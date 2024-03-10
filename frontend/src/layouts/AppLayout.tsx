@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 import { observer } from 'mobx-react-lite'
 import { Outlet } from 'react-router-dom';
 import RouteGuard from '@/providers/RouteGuard';
@@ -10,26 +10,26 @@ import {
     FolderIcon,
     HomeIcon,
     XMarkIcon,
-  } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 import { IAppNavigationItem } from '@/types/app';
 import { useLocation } from 'react-router-dom';
 
-const AppLayout = observer( () => {
+const AppLayout = observer(() => {
 
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false)
     const [currentNavItem, setCurrentNavItem] = useState<IAppNavigationItem>()
 
-    const navigation: IAppNavigationItem[] = [
+    const navigation: IAppNavigationItem[] = useMemo(() => [
         { name: 'Dashboard', route: ROUTES.DASHBOARD_ROUTE, icon: HomeIcon },
         { name: 'Projects', route: ROUTES.PROJECTS_ROUTE, icon: FolderIcon },
-    ]
+    ], []);
 
     const location = useLocation();
 
     React.useEffect(() => {
         const navItem = navigation.find(item => item.route === location.pathname)
         setCurrentNavItem(navItem)
-      }, [location]);
+    }, [location, navigation]);
 
     function handleMobileHeaderClick() {
         setSidebarOpen(true)
@@ -76,10 +76,10 @@ const AppLayout = observer( () => {
                                         leaveTo="opacity-0"
                                     >
                                         <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
-                                        <button type="button" className="-m-2.5 p-2.5" onClick={() => setSidebarOpen(false)}>
-                                            <span className="sr-only">Close sidebar</span>
-                                            <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                                        </button>
+                                            <button type="button" className="-m-2.5 p-2.5" onClick={() => setSidebarOpen(false)}>
+                                                <span className="sr-only">Close sidebar</span>
+                                                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                                            </button>
                                         </div>
                                     </Transition.Child>
                                     <AppSidebar navigation={navigation} currentNavItem={currentNavItem} />
@@ -105,6 +105,3 @@ const AppLayout = observer( () => {
 });
 
 export default AppLayout;
-function ga(arg0: string, arg1: string) {
-    throw new Error('Function not implemented.');
-}

@@ -1,5 +1,4 @@
 import api from './index'
-import { IAuthLoginRequest, IAuthTokenResponse } from '@/types/auth'
 import { authStore } from '@/store/auth'
 
 export function fetchMe() {

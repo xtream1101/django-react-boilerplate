@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
-import AppPage from './pages/AppPage'
+import DashboardPage from './pages/DashboardPage'
+import ProjectsPage from './pages/ProjectsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { ROUTES } from './resources/routes-constants'
 import { observer } from 'mobx-react-lite'
 import RouteGuard from './providers/RouteGuard'
 import AppLayout from './layouts/AppLayout'
 import LogoutPage from './pages/LogoutPage'
-import ExamplePage from './pages/ExamplePage'
 
- const RootComponent = observer( () => {
+const RootComponent = observer(() => {
 
     return (
         <Router>
@@ -45,13 +45,11 @@ import ExamplePage from './pages/ExamplePage'
                 <Route element={<AppLayout />}>
                     <Route
                         path={ROUTES.DASHBOARD_ROUTE}
-                        element={
-                            <AppPage />
-                        }
+                        element={<DashboardPage />}
                     />
                     <Route
                         path={ROUTES.PROJECTS_ROUTE}
-                        element={ <div>Projects</div> }
+                        element={<ProjectsPage />}
                     />
                 </Route>
 
