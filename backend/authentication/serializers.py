@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     @extend_schema_field(serializers.CharField())
     def get_display_name(self, obj):
-        return obj.get_display_name()
+        return obj.display_name()
 
     @extend_schema_field(serializers.CharField())
     def get_initials(self, obj):

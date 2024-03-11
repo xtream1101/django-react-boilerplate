@@ -11,8 +11,12 @@ class User(AbstractUser):
     USERNAME_FIELD = "username"
     EMAIL_FIELD = "email"
 
-    def get_display_name(self):
+    @property
+    def display_name(self):
         return self.get_full_name() or self.email
+
+    def __str__(self):
+        return f"{self.display_name} ({self.email})"
 
     def clean(self):
         super().clean()
