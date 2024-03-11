@@ -32,6 +32,17 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     add_form = UserCreationForm
     change_password_form = AdminPasswordChangeForm
 
+    # Use email, not username on admin user form https://forum.djangoproject.com/t/custom-add-user-form-in-django-admin/16443/8
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("email", "first_name", "last_name", "password1", "password2"),
+            },
+        ),
+    )
+
 
 admin.site.unregister(Group)
 
