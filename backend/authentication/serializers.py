@@ -10,11 +10,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     @extend_schema_field(serializers.CharField())
     def get_display_name(self, obj):
-        return obj.display_name()
+        return obj.display_name
 
     @extend_schema_field(serializers.CharField())
     def get_initials(self, obj):
-        initials = "".join(list(map(lambda name: name[0].upper(), obj.get_display_name().split(" "))))
+        initials = "".join(list(map(lambda name: name[0].upper(), obj.display_name.split(" "))))
         return initials
 
     class Meta:
