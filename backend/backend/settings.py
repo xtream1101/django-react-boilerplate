@@ -167,6 +167,9 @@ DATABASES = {
     )
 }
 
+FIXTURE_DIRS = [
+    f"{BASE_DIR}/fixtures",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

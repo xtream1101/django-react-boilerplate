@@ -14,8 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     @extend_schema_field(serializers.CharField())
     def get_initials(self, obj):
-        initials = "".join(list(map(lambda name: name[0].upper(), obj.display_name.split(" "))))
-        return initials
+        return obj.initials
 
     class Meta:
         model = User

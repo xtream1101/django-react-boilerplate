@@ -19,3 +19,4 @@
 
 3. Setup the backend at [backend/README.md](backend/README.md)
 4. Setup the frontend at [frontend/README.md](frontend/README.md)
+5. Check out the [justfile](https://github.com/casey/just) commands available: `just --list`
