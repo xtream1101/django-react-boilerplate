@@ -21,18 +21,20 @@
         "model": "oauth2_provider.application",
         "pk": 1,
         "fields": {
-            "client_id": "Fo1F36zBwUBd6EPuWSFAeEkfgMd1gAJ6g4d0qDC4",
+            "client_id": "2kwF5urOUvqoGupLCP9Tqsng9UOBiEPRYqM00KHt",
             "user": null,
             "redirect_uris": "",
             "post_logout_redirect_uris": "",
             "client_type": "confidential",
             "authorization_grant_type": "password",
-            "client_secret": "yLfT6JC7t6QqHb708MTGtnrBHdm0C5T3tB4R7DOQneY7AI1poUgUjQrvmo048C9qS0ovWYNLbQGMmdQTEKqDE7gAT1ymaMiFn89o2mfXeZheBECtvNf4VYp540uIwv95",
-            "name": "Local API",
+            "client_secret": "dJ06cqpsJLtCeUbh22VJovzMQiYEbO3nNYcwKsuMJ34hmI86USvUuxHS2emzqA68jtv7O9wzbRzLEvRybTvt42h8LQS36ec4oROuoldE0qYColcE91b8Qeh5ZxbyAU9q",
+            "hash_client_secret": false,
+            "name": "Local Dev",
             "skip_authorization": false,
-            "created": "2024-09-28T01:55:10.734Z",
-            "updated": "2024-09-28T01:55:10.734Z",
-            "algorithm": ""
+            "created": "2024-11-23T22:26:36.698Z",
+            "updated": "2024-11-23T22:26:36.698Z",
+            "algorithm": "",
+            "allowed_origins": ""
         }
     }
 ]

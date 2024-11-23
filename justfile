@@ -3,7 +3,11 @@ db_name := "boiler-plate-db"
 python := "poetry run python"
 project_dir := justfile_dir()
 
-# Start all Servers
+# Run python poetry command with args
+poetry *ARGS:
+    @cd "{{ project_dir }}/backend"; poetry {{ ARGS }}
+
+# Start db, api, and run migrate and loaddata
 start-api:
     @echo "Starting all servers"
     just --justfile {{ justfile() }} start-db
@@ -11,11 +15,11 @@ start-api:
     just --justfile {{ justfile() }} manage loaddata setup
     just --justfile {{ justfile() }} manage runserver
 
-# Clear db and start all services
+# Clear db and start up the api again
 start-api-fresh:
     @echo "Clearing database and starting all servers"
     just --justfile {{ justfile() }} stop-db
-    just --justfile {{ justfile() }} start
+    just --justfile {{ justfile() }} start-api
 
 # Start the postgres db
 start-db:
@@ -37,3 +41,8 @@ manage *ARGS:
 migrate:
     just --justfile {{ justfile() }} manage makemigrations
     just --justfile {{ justfile() }} manage migrate
+
+
+start-react:
+    @cd "{{ project_dir }}/frontend"; npm install
+    @cd "{{ project_dir }}/frontend"; npm start
