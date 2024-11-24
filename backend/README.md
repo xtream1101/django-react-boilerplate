@@ -24,9 +24,31 @@ Currently uses local user login, but is setup to support 3rd party sso.
     - [Ruff](https://github.com/astral-sh/ruff) (code quality)
 
 
-## Setup
+## Quick Setup
 
-1. Create a `.env` in the root backend folder with the following content:
+
+1. Install Poetry: <https://python-poetry.org/docs/>
+
+2. Install the just cli tool <https://github.com/casey/just>
+
+3. Start the server
+
+    This will spin up a local postgres db and run the server.
+
+    ```bash
+    just start-api
+    ```
+
+    Other commands can be foun by running `just --list`
+
+4. Access the admin at <http://127.0.0.1:8000/admin/>
+
+    - Default login is `admin@example.com` and `Headset6-Darkroom-Tamer`
+
+
+## Manual Setup
+
+1. Create a `.env` in the root backend folder with the following content, only needed if not using the defaults:
 
     ```bash
     DJANGO_SECRET_KEY="super-secret-value-here"

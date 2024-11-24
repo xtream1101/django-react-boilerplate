@@ -1,0 +1,27 @@
+meta {
+  name: Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{BASE_URL}}/auth/token
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "client_id": "{{API_CLIENT_ID}}",
+    "client_secret": "{{API_CLIENT_SECRET}}",
+    "grant_type": "password",
+    "username": "admin@example.com",
+    "password": "Headset6-Darkroom-Tamer"
+  }
+
+}
+
+vars:post-response {
+  accessToken: res.body.access_token
+  refreshToken: res.body.refresh_token
+}
